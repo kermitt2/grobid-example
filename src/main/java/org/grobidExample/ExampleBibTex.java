@@ -11,6 +11,9 @@ import org.grobid.core.utilities.GrobidProperties;
 import java.util.Properties;
 import java.util.List;
 import java.io.FileInputStream;
+import java.io.File;
+
+import org.apache.commons.io.FileUtils;
 
 /**
  * An example of usage of Grobid. Extract and normalize the header of a PDF file and export it in BibTex. 
@@ -19,9 +22,9 @@ import java.io.FileInputStream;
  *
  */
 public class ExampleBibTex {
-	private static Engine engine;
+	private static Engine engine = null;
 
-	public static String runGrobid(String pdfPath, String process) {
+	public String runGrobid(String pdfPath, String process) {
 		String bibtex = "";
 		try {
 			// context variable are read from the project property file grobid-example.properties
@@ -34,6 +37,7 @@ public class ExampleBibTex {
 			GrobidProperties.getInstance();
 
 			System.out.println(">>>>>>>> GROBID_HOME="+GrobidProperties.get_GROBID_HOME_PATH());
+		
 			engine = GrobidFactory.getInstance().createEngine();
 		
 			if (process.equals("header")) {
@@ -69,4 +73,35 @@ public class ExampleBibTex {
 		return bibtex;
 	}
 	
+	/**
+     *	
+     */
+    public static void main(String[] args) {
+		if (args.length != 3) {
+			System.err.println("usage: command process[header|citation] path-to-pdf-file path-to-bib-file");
+			return;
+		}
+	
+		String process = args[0];
+		
+		if (!process.equals("citation") && !process.equals("header")) {
+			System.err.println("unknown process: " + process); 
+			System.err.println("usage: command process[header|citation] path-to-pdf-file path-to-bib-file");
+			return;
+		}
+		
+		String pdfPath = args[1];
+		String bibPath = args[2];
+		
+		File bibFile = new File(bibPath);
+		System.out.println(process + " " + pdfPath + " " + bibPath);
+		try {
+			ExampleBibTex example = new ExampleBibTex();
+			String result = example.runGrobid(pdfPath, process);
+			FileUtils.writeStringToFile(bibFile, result, "UTF-8");
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
 }

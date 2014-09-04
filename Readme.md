@@ -14,11 +14,17 @@ The paths to __grobid-home__ and to the property __grobid.properties__ file must
 		grobid_example.pGrobidHome=/Users/lopez/grobid/grobid-home
 		grobid_example.pGrobidProperties=/Users/lopez/grobid/grobid-home/config/grobid.properties
 
-You can then test the example project:
+You can then build and test the example project:
 
-> mvn test
+> mvn install
 
+Extracting the header of a PDf file and outputting the result in the BibTeX file `out.bib` can be obtained with command:
 
+> mvn exec:exec -Pprocess_header_bibtex -DpdfFile=src/test/resources/Wang_paperAVE2008.pdf -DbibFile=out.bib
+
+Extracting the citations of a PDf file and outputting the results in the BibTeX file `out.bib`:
+
+> mvn exec:exec -Pprocess_citation_bibtex -DpdfFile=src/test/resources/Wang_paperAVE2008.pdf -DbibFile=out.bib
 
 We describe below how Grobid is used in this example project. You can use this project as a skeleton to implement your own Grobid process or as an illustration to use Grobid in an existing/new project. 
 

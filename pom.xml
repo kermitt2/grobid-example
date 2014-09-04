@@ -102,7 +102,7 @@
 		
 		<dependency>
 		    <groupId>org.grobid.core</groupId>
-		    <artifactId>grobid</artifactId>
+		    <artifactId>grobid-core</artifactId>
 		    <version>0.2.10</version>
 		    <scope>system</scope>
 		    <systemPath>${project.basedir}/lib/grobid-core-0.2.10.jar</systemPath>
@@ -162,7 +162,7 @@
 	
 	<profiles>
 
-        <!-- mvn compile exec:exec -Pprocess_header_bibtex -->
+        <!-- mvn exec:exec -Pprocess_header_bibtex -DpdfFile=truc.pdf -DbibFile=out.bib -->
         <profile>
             <id>process_header_bibtex</id>
             <activation>
@@ -174,15 +174,47 @@
                 <plugins>
                     <plugin>
                         <groupId>org.codehaus.mojo</groupId>
-                        <artifactId>exec-maven-plugin</artifactId>
+                        <artifactId>exec-maven-plugin</artifactId>	
                         <configuration>
                             <executable>java</executable>
+							<classpathScope>compile</classpathScope>
                             <arguments>
                                 <argument>-classpath</argument>
-                                <classpath/>
+								<classpath/>
                                 <argument>org.grobidExample.ExampleBibTex</argument>
 								<argument>header</argument>
-								<argument>${file}</argument>
+								<argument>${pdfFile}</argument>
+								<argument>${bibFile}</argument>
+                            </arguments>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+		<!-- mvn exec:exec -Pprocess_citation_bibtex -DpdfFile=truc.pdf -DbibFile=out.bib -->
+        <profile>
+            <id>process_citation_bibtex</id>
+            <activation>
+                <property>
+                    <name>process_citation_bibtex</name>
+                </property>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>exec-maven-plugin</artifactId>	
+                        <configuration>
+                            <executable>java</executable>
+							<classpathScope>compile</classpathScope>
+                            <arguments>
+                                <argument>-classpath</argument>
+								<classpath/>
+                                <argument>org.grobidExample.ExampleBibTex</argument>
+								<argument>citation</argument>
+								<argument>${pdfFile}</argument>
+								<argument>${bibFile}</argument>
                             </arguments>
                         </configuration>
                     </plugin>
