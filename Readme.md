@@ -1,7 +1,7 @@
 This project illustrates how to embed Grobid ([grobid](https://raw.github.com/kermitt2/grobid)) in your Java application. 
 
-You need to install first and build Grobid, see:  
-## [Build the project](https://github.com/kermitt2/grobid/wiki/Build-the-project)
+You need to install first and build Grobid, see this link:  
+# [Build the project](https://github.com/kermitt2/grobid/wiki/Build-the-project)
 
 via maven, this will deploy the Grobid artifact in your local maven repository. This will also create a jar file under: grobid/grobid-core/target/grobid-core-`<current version>`.jar
 
@@ -9,7 +9,7 @@ Copy the Grobid jar library under grobid-test/lib :
 
 > copy target/grobid-core-`<current version>`.jar `path_to_grobid_test`/grobid-test/lib
 
-The paths to __grobid-home__ and to the property __grobid.properties__ file must be changed in the project property file:  grobid-example/grobid-example.properties according to your installation, for instance: 
+The paths to __grobid-home__ and to the property __grobid.properties__ file must be changed in the project property file:  `grobid-example/grobid-example.properties` according to your installation, for instance: 
 
 		grobid_example.pGrobidHome=/Users/lopez/grobid/grobid-home
 		grobid_example.pGrobidProperties=/Users/lopez/grobid/grobid-home/config/grobid.properties
@@ -18,9 +18,11 @@ You can then test the example project:
 
 > mvn test
 
-We then describe here how Grobid is used in this example project. You can use this project as a skeleton to implement your own Grobid process or as an illustration to use Grobid in an existing/new project. 
 
-## Building with maven
+
+We describe below how Grobid is used in this example project. You can use this project as a skeleton to implement your own Grobid process or as an illustration to use Grobid in an existing/new project. 
+
+# Building with maven
 
 When using maven, if you want to call Grobid API, you need to include in your pom file the path to the Grobid jar file, for instance as follow (replace `0.2.10` by the valid `<current version>`):
 
@@ -32,7 +34,7 @@ When using maven, if you want to call Grobid API, you need to include in your po
 	    <systemPath>${project.basedir}/lib/grobid-core-0.2.10.jar</systemPath>
 	</dependency>
 
-## API call
+# API call
 
 When using Grobid, you have to initiate a context with the path to the Grobid resources, the following class give an example of usage:
 
