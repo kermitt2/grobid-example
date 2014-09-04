@@ -7,6 +7,8 @@ import org.grobid.core.factory.GrobidFactory;
 import org.grobid.core.mock.MockContext;
 import org.grobid.core.utilities.GrobidProperties;
 
+import java.util.Properties;
+import java.io.FileInputStream;
 
 /**
  * An example of usage of Grobid.
@@ -20,8 +22,10 @@ public class MyGrobid {
 	public static String runGrobid(String pdfPath) {
 		String tei = null;
 		try {
-			String pGrobidHome = "/Users/lopez/grobid/grobid-home";
-			String pGrobidProperties = "/Users/lopez/grobid/grobid-home/config/grobid.properties";
+			Properties prop = new Properties();
+			prop.load(new FileInputStream("grobid-example.properties"));
+			String pGrobidHome = prop.getProperty("grobid_example.pGrobidHome");
+			String pGrobidProperties = prop.getProperty("grobid_example.pGrobidProperties");
 
 			MockContext.setInitialContext(pGrobidHome, pGrobidProperties);		
 			GrobidProperties.getInstance();

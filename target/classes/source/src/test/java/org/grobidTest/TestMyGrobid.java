@@ -1,4 +1,4 @@
-package org.grobidTest;
+package org.grobidExample;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertEquals;
@@ -15,11 +15,29 @@ public class TestMyGrobid {
 	private String testPath = null;
 
 	@Test
-	public void testHeaderHeader() throws Exception {
+	public void testHeader() throws Exception {
 		String pdfPath = "./src/test/resources/Wang paperAVE2008.pdf";
 		String result = MyGrobid.runGrobid(pdfPath);
 		assertNotNull(result);
 		
 		System.out.println(result);
 	}
+	
+	@Test
+	public void testHeaderBibTeX() throws Exception {
+		String pdfPath = "./src/test/resources/Wang paperAVE2008.pdf";
+		String result = ExampleBibTex.runGrobid(pdfPath, "header");
+		assertNotNull(result);
+		
+		System.out.println(result);
+	}
+	
+	@Test
+	public void testCitationBibTeX() throws Exception {
+		String pdfPath = "./src/test/resources/Wang paperAVE2008.pdf";
+		String result = ExampleBibTex.runGrobid(pdfPath, "citation");
+		assertNotNull(result);
+		
+		System.out.println(result);
+	}	
 }

@@ -3,16 +3,16 @@ This project illustrates how to embed Grobid ([grobid](https://raw.github.com/ke
 You need to install first and build Grobid, see:  
 ## [Build the project](https://github.com/kermitt2/grobid/wiki/Build-the-project)
 
-via maven, this will deploy the Grobid artifact in your local maven repository. This will also create two jar files under: grobid/grobid-core/target/grobid-core-`<current version>`.one-jar.jar and grobid/grobid-core/target/grobid-core-`<current version>`.jar
+via maven, this will deploy the Grobid artifact in your local maven repository. This will also create a jar file under: grobid/grobid-core/target/grobid-core-`<current version>`.jar
 
-Copy the Grobid jar library under grobid-test/lib
+Copy the Grobid jar library under grobid-test/lib :
 
 > copy target/grobid-core-`<current version>`.jar `path_to_grobid_test`/grobid-test/lib
 
-The paths to __grobid-home__ and to the property __grobid.properties__ file must be changed in the file grobid-test/src/main/java/org/grobidTest/MyGrobid.java according to your installation, for instance: 
+The paths to __grobid-home__ and to the property __grobid.properties__ file must be changed in the project property file:  grobid-example/grobid-example.properties according to your installation, for instance: 
 
-		String pGrobidHome = "/Users/lopez/grobid/grobid-home";
-		String pGrobidProperties = "/Users/lopez/grobid/grobid-home/config/grobid.properties";
+		grobid_example.pGrobidHome=/Users/lopez/grobid/grobid-home
+		grobid_example.pGrobidProperties=/Users/lopez/grobid/grobid-home/config/grobid.properties
 
 You can then test the example project:
 
