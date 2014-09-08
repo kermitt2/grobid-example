@@ -5,9 +5,9 @@ You need to install first and build Grobid, see this link:
 
 via maven, this will deploy the Grobid artifact in your local maven repository. This will also create a jar file under: grobid/grobid-core/target/grobid-core-`<current version>`.jar
 
-Copy the Grobid jar library under grobid-test/lib :
+Copy the Grobid jar library under grobid-example/lib :
 
-> copy target/grobid-core-`<current version>`.jar `path_to_grobid_test`/grobid-test/lib
+> copy target/grobid-core-`<current version>`.jar `path_to_grobid_example`/grobid-example/lib
 
 The paths to __grobid-home__ and to the property __grobid.properties__ file must be changed in the project property file:  `grobid-example/grobid-example.properties` according to your installation, for instance: 
 
