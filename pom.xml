@@ -8,7 +8,7 @@
 	<groupId>grobid-example</groupId>
 	<artifactId>org.grobidExample</artifactId>
 	<packaging>jar</packaging>
-	<version>0.0.1</version>
+	<version>0.0.2</version>
 	
 	<name>grobid-example</name>
 	<description>Examples of usage of Grobid in a third party Java project.</description>
@@ -103,9 +103,9 @@
 		<dependency>
 		    <groupId>org.grobid.core</groupId>
 		    <artifactId>grobid-core</artifactId>
-		    <version>0.3.3-SNAPSHOT</version>
+		    <version>0.3.4-SNAPSHOT</version>
 		    <scope>system</scope>
-		    <systemPath>${project.basedir}/lib/grobid-core-0.3.3-SNAPSHOT.jar</systemPath>
+		    <systemPath>${project.basedir}/lib/grobid-core-0.3.4-SNAPSHOT.jar</systemPath>
 		</dependency>
 		
 		<dependency>
@@ -176,7 +176,6 @@
 	</dependencies>
 	
 	<profiles>
-
         <!-- mvn exec:exec -Pprocess_header_bibtex -DpdfFile=truc.pdf -DbibFile=out.bib -->
         <profile>
             <id>process_header_bibtex</id>

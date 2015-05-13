@@ -1,9 +1,8 @@
-This project illustrates how to embed Grobid ([grobid](https://raw.github.com/kermitt2/grobid)) in your Java application. 
+This project illustrates how to embed Grobid ([grobid](https://raw.github.com/kermitt2/grobid)) in your Java application. This example project is using GROBID Java API for extracting header metadata and citations from a PDF and output the results in BibTex format. 
 
-You need to install first and build Grobid, see this link:  
-### [Build the project](https://github.com/kermitt2/grobid/wiki/Build-the-project)
+You need to install first and build Grobid, see this link: [Build the project](http://grobid.readthedocs.org/en/latest/Install-Grobid/)
 
-via maven, this will deploy the Grobid artifact in your local maven repository. This will also create a jar file under: grobid/grobid-core/target/grobid-core-`<current version>`.jar
+Via maven, this will deploy the Grobid artifact in your local maven repository. This will also create a jar file under: grobid/grobid-core/target/grobid-core-`<current version>`.jar
 
 Copy the Grobid jar library under grobid-example/lib :
 
@@ -18,11 +17,13 @@ You can then build and test the example project:
 
 > mvn install
 
-Extracting the header of a PDf file and outputting the result in the BibTeX file `out.bib` can be obtained with command:
+### The example: Extracting header metadata and citations from a PDF in BibTeX format
+
+Extracting the header of a PDF file and outputting the result in the BibTeX file `out.bib` can be obtained with command:
 
 > mvn exec:exec -Pprocess_header_bibtex -DpdfFile=src/test/resources/Wang_paperAVE2008.pdf -DbibFile=out.bib
 
-Extracting the citations of a PDf file and outputting the results in the BibTeX file `out.bib`:
+Extracting the citations of a PDF file and outputting the results in the BibTeX file `out.bib`:
 
 > mvn exec:exec -Pprocess_citation_bibtex -DpdfFile=src/test/resources/Wang_paperAVE2008.pdf -DbibFile=out.bib
 
@@ -30,14 +31,14 @@ We describe below how Grobid is used in this example project. You can use this p
 
 ### Building with maven
 
-When using maven, if you want to call Grobid API, you need to include in your pom file the path to the Grobid jar file, for instance as follow (replace `0.2.10` by the valid `<current version>`):
+When using maven, if you want to call Grobid API, you need to include in your pom file the path to the Grobid jar file, for instance as follow (replace `0.3.4-SNAPSHOT` by the valid `<current version>`):
 
 	<dependency>
 	    <groupId>org.grobid.core</groupId>
 	    <artifactId>grobid</artifactId>
-	    <version>0.2.10</version>
+	    <version>0.3.4-SNAPSHOT</version>
 	    <scope>system</scope>
-	    <systemPath>${project.basedir}/lib/grobid-core-0.2.10.jar</systemPath>
+	    <systemPath>${project.basedir}/lib/grobid-core-0.3.4-SNAPSHOT.jar</systemPath>
 	</dependency>
 
 ### API call
