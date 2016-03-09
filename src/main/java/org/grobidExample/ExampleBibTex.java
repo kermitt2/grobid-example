@@ -47,7 +47,7 @@ public class ExampleBibTex {
 				bibtex = resHeader.toBibTeX();
 			}
 			else if (process.equals("citation")) {
-				List<BibDataSet> citations = engine.processReferences(pdfPath, false);
+				List<BibDataSet> citations = engine.processReferences(new File(pdfPath), false);
 				for(BibDataSet bib : citations) {
 					if (bib.getResBib() != null)
 						bibtex += bib.getResBib().toBibTeX();

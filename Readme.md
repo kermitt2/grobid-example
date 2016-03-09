@@ -38,9 +38,9 @@ When using maven, if you want to call Grobid API, you need to include in your po
 	<dependency>
 	    <groupId>org.grobid.core</groupId>
 	    <artifactId>grobid</artifactId>
-	    <version>0.3.4-SNAPSHOT</version>
+	    <version>0.4.1-SNAPSHOT</version>
 	    <scope>system</scope>
-	    <systemPath>${project.basedir}/lib/grobid-core-0.3.4-SNAPSHOT.jar</systemPath>
+	    <systemPath>${project.basedir}/lib/grobid-core-0.4.1-SNAPSHOT.jar</systemPath>
 	</dependency>
 
 ### API call
