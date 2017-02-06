@@ -21,13 +21,25 @@ You can then build and test the example project:
 
 ### The example: Extracting header metadata and citations from a PDF in BibTeX format
 
+#### Processing one PDF
+
 Extracting the header of a PDF file and outputting the result in the BibTeX file `out.bib` can be obtained with command:
 
-> mvn exec:exec -Pprocess_header_bibtex -DpdfFile=src/test/resources/Wang_paperAVE2008.pdf -DbibFile=out.bib
+> mvn exec:exec -Pprocess_header_bibtex -Dpdf=src/test/resources/Wang_paperAVE2008.pdf -Dbib=out.bib
 
 Extracting the citations of a PDF file and outputting the results in the BibTeX file `out.bib`:
 
-> mvn exec:exec -Pprocess_citation_bibtex -DpdfFile=src/test/resources/Wang_paperAVE2008.pdf -DbibFile=out.bib
+> mvn exec:exec -Pprocess_citation_bibtex -Dpdf=src/test/resources/Wang_paperAVE2008.pdf -Dbib=out.bib
+
+#### Processing a repertory of PDFs
+
+Extracting the header of all the PDF files in a given repertory and outputting the result in BibTeX files `.bib`:
+
+> mvn exec:exec -Pprocess_header_bibtex -Dpdf=src/test/resources/pdf/ -Dbib=src/test/resources/bib/
+
+Extracting the citations of all the PDF files in a given repertory and outputting the result in BibTeX files `.bib`:
+
+> mvn exec:exec -Pprocess_citation_bibtex -Dpdf=src/test/resources/pdf/ -Dbib=src/test/resources/bib/
 
 We describe below how Grobid is used in this example project. You can use this project as a skeleton to implement your own Grobid process or as an illustration to use Grobid in an existing/new project. 
 

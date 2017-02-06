@@ -6,6 +6,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThat;
 
 import org.junit.Test;
+import java.io.*;
 
 /**
  *  @author Patrice Lopez
@@ -27,19 +28,21 @@ public class TestMyGrobid {
 	public void testHeaderBibTeX() throws Exception {
 		String pdfPath = "./src/test/resources/Wang_paperAVE2008.pdf";
 		ExampleBibTex example = new ExampleBibTex();
-		String result = example.runGrobid(pdfPath, "header");
+		String result = example.runGrobid(new File(pdfPath), "header");
 		assertNotNull(result);
 		
 		System.out.println(result);
+		example.close();
 	}
 	
 	@Test
 	public void testCitationBibTeX() throws Exception {
 		String pdfPath = "./src/test/resources/Wang_paperAVE2008.pdf";
 		ExampleBibTex example = new ExampleBibTex();
-		String result = example.runGrobid(pdfPath, "citation");
+		String result = example.runGrobid(new File(pdfPath), "citation");
 		assertNotNull(result);
 		
 		System.out.println(result);
+		example.close();
 	}	
 }

@@ -201,8 +201,8 @@
 								<classpath/>
                                 <argument>org.grobidExample.ExampleBibTex</argument>
 								<argument>header</argument>
-								<argument>${pdfFile}</argument>
-								<argument>${bibFile}</argument>
+								<argument>${pdf}</argument>
+								<argument>${bib}</argument>
                             </arguments>
                         </configuration>
                     </plugin>
@@ -231,8 +231,8 @@
 								<classpath/>
                                 <argument>org.grobidExample.ExampleBibTex</argument>
 								<argument>citation</argument>
-								<argument>${pdfFile}</argument>
-								<argument>${bibFile}</argument>
+								<argument>${pdf}</argument>
+								<argument>${bib}</argument>
                             </arguments>
                         </configuration>
                     </plugin>
