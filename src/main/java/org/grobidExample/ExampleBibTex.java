@@ -40,28 +40,25 @@ public class ExampleBibTex {
 		}
 	}
 
-	public String runGrobid(File pdfFile, String process) {
+	public String runGrobid(File pdfFile, String process, boolean consolidate) {
 		StringBuilder bibtex = new StringBuilder();
 		try {
 			if (process.equals("header")) {
 				// Biblio object for the result
 				BiblioItem resHeader = new BiblioItem();
-				engine.processHeader(pdfFile.getPath(), false, resHeader);
+				engine.processHeader(pdfFile.getPath(), consolidate, resHeader);
 				bibtex.append(resHeader.toBibTeX());
-			}
-			else if (process.equals("citation")) {
-				List<BibDataSet> citations = engine.processReferences(pdfFile, false);
+			} else if (process.equals("citation")) {
+				List<BibDataSet> citations = engine.processReferences(pdfFile, consolidate);
 				for(BibDataSet bib : citations) {
 					if (bib.getResBib() != null)
 						bibtex.append(bib.getResBib().toBibTeX());
 				} 
-			}
-			else {
+			} else {
 				System.err.println("Unknown selected process: " + process);
 				System.err.println("Usage: command process[header,citation] path_to_pdf");	
 			}
-		} 
-		catch (Exception e) {
+		} catch (Exception e) {
 			// If an exception is generated, print a stack trace
 			e.printStackTrace();
 		} 
@@ -71,8 +68,7 @@ public class ExampleBibTex {
 	public void close() {
 		try {
 			MockContext.destroyInitialContext();
-		} 
-		catch (Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
@@ -81,7 +77,7 @@ public class ExampleBibTex {
      *	
      */
     public static void main(String[] args) {
-		if (args.length != 3) {
+		if ((args.length != 3) && (args.length != 4)) {
 			System.err.println("usage: command process[header|citation] path-to-pdf-file path-to-bib-file");
 			return;
 		}
@@ -96,8 +92,14 @@ public class ExampleBibTex {
 
 		String pdfPath = args[1];
 		String bibPath = args[2];
+		String consolidation = null;
+		boolean consolidate = false;
+		if (args.length == 4)
+			consolidation = args[3];
 
-		System.out.println(process + " " + pdfPath + " " + bibPath);
+		System.out.print(process + " " + pdfPath + " " + bibPath);
+		if ((consolidation != null) && (consolidation.equals("1") || consolidation.equals("true")))
+			consolidate = true;
 
 		File pdfFile = new File(pdfPath);
 		File bibFile = new File(bibPath);
@@ -140,7 +142,7 @@ public class ExampleBibTex {
 		ExampleBibTex example = new ExampleBibTex();
 		try {
 			for(File fileToProcess : filesToProcess) {
-				String result = example.runGrobid(fileToProcess, process);
+				String result = example.runGrobid(fileToProcess, process, consolidate);
 				if (!bibFile.exists() || bibFile.isFile())
 					FileUtils.writeStringToFile(bibFile, result, "UTF-8");
 				else {

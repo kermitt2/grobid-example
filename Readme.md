@@ -25,11 +25,15 @@ You can then build and test the example project:
 
 Extracting the header of a PDF file and outputting the result in the BibTeX file `out.bib` can be obtained with command:
 
-> mvn exec:exec -Pprocess_header_bibtex -Dpdf=src/test/resources/Wang_paperAVE2008.pdf -Dbib=out.bib
+> mvn exec:exec -Pprocess_header_bibtex -Dpdf=src/test/resources/Wang_paperAVE2008.pdf -Dbib=out.bib 
 
 Extracting the citations of a PDF file and outputting the results in the BibTeX file `out.bib`:
 
 > mvn exec:exec -Pprocess_citation_bibtex -Dpdf=src/test/resources/Wang_paperAVE2008.pdf -Dbib=out.bib
+
+If you would like to run GROBID with consolidation thanks to CrossRef DOI service, add the following parameter (be sure to indicate your CrossRef account credentials in the GROBID main project file grobid/grobid-home/config/grobid.properties):
+
+> mvn exec:exec -Pprocess_citation_bibtex -Dpdf=src/test/resources/Wang_paperAVE2008.pdf -Dbib=out.bib -Dconsolidation=true
 
 #### Processing a repertory of PDFs
 
@@ -40,6 +44,10 @@ Extracting the header of all the PDF files in a given repertory and outputting t
 Extracting the citations of all the PDF files in a given repertory and outputting the result in BibTeX files `.bib`:
 
 > mvn exec:exec -Pprocess_citation_bibtex -Dpdf=src/test/resources/pdf/ -Dbib=src/test/resources/bib/
+
+If you would like to run GROBID with consolidation thanks to CrossRef DOI service, add the following parameter (be sure to indicate your CrossRef account credentials in the GROBID main project file grobid/grobid-home/config/grobid.properties):
+
+> mvn exec:exec -Pprocess_citation_bibtex -Dpdf=src/test/resources/pdf/ -Dbib=src/test/resources/bib/ -Dconsolidation=true
 
 We describe below how Grobid is used in this example project. You can use this project as a skeleton to implement your own Grobid process or as an illustration to use Grobid in an existing/new project. 
 

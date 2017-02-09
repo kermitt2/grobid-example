@@ -203,6 +203,7 @@
 								<argument>header</argument>
 								<argument>${pdf}</argument>
 								<argument>${bib}</argument>
+								<argument>${consolidation}</argument>
                             </arguments>
                         </configuration>
                     </plugin>
@@ -233,6 +234,7 @@
 								<argument>citation</argument>
 								<argument>${pdf}</argument>
 								<argument>${bib}</argument>
+								<argument>${consolidation}</argument>
                             </arguments>
                         </configuration>
                     </plugin>
