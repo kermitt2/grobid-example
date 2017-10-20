@@ -1,12 +1,10 @@
 package org.grobidExample;
 
-import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertThat;
-
 import org.junit.Test;
-import java.io.*;
+
+import java.io.File;
+
+import static org.junit.Assert.assertNotNull;
 
 /**
  *  @author Patrice Lopez
