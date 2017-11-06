@@ -53,14 +53,14 @@ We describe below how Grobid is used in this example project. You can use this p
 
 ### Building with maven
 
-When using maven, if you want to call Grobid API, you need to include in your pom file the path to the Grobid jar file, for instance as follow (replace `0.3.4-SNAPSHOT` by the valid `<current version>`):
+When using maven, if you want to call Grobid API, you need to include in your pom file the path to the Grobid jar file, for instance as follow (replace `0.5.0-SNAPSHOT` by the valid `<current version>`):
 
 	<dependency>
 	    <groupId>org.grobid.core</groupId>
 	    <artifactId>grobid</artifactId>
-	    <version>0.4.1-SNAPSHOT</version>
+	    <version>0.5.0-SNAPSHOT</version>
 	    <scope>system</scope>
-	    <systemPath>${project.basedir}/lib/grobid-core-0.4.1-SNAPSHOT.jar</systemPath>
+	    <systemPath>${project.basedir}/lib/grobid-core-0.5.0-SNAPSHOT.jar</systemPath>
 	</dependency>
 
 ### API call
@@ -70,20 +70,20 @@ When using Grobid, you have to initiate a context with the path to the Grobid re
         import org.grobid.core.*;
         import org.grobid.core.data.*;
         import org.grobid.core.factory.*;
-        import org.grobid.core.mock.*;
         import org.grobid.core.utilities.*;
         import org.grobid.core.engines.Engine;
+        import org.grobid.core.main.GrobidHomeFinder;
         ...
         String pdfPath = "mypdffile.pdf";
         ...
-	try {
+		try {
 			String pGrobidHome = "/Users/lopez/grobid/grobid-home";
 			String pGrobidProperties = "/Users/lopez/grobid/grobid-home/config/grobid.properties";
 
-			MockContext.setInitialContext(pGrobidHome, pGrobidProperties);		
-			GrobidProperties.getInstance();
+			GrobidHomeFinder grobidHomeFinder = new GrobidHomeFinder(Arrays.asList(pGrobidHome));
+            GrobidProperties.getInstance(grobidHomeFinder);
 
-			System.out.println(">>>>>>>> GROBID_HOME="+GrobidProperties.get_GROBID_HOME_PATH());
+            System.out.println(">>>>>>>> GROBID_HOME=" + GrobidProperties.get_GROBID_HOME_PATH());
 
 			Engine engine = GrobidFactory.getInstance().createEngine();
 
@@ -95,16 +95,8 @@ When using Grobid, you have to initiate a context with the path to the Grobid re
 			// If an exception is generated, print a stack trace
 			e.printStackTrace();
 		} 
-		finally {
-			try {
-				MockContext.destroyInitialContext();
-			} 
-			catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
 
-The context paths (pGrobidHome and pGrobidProperties) can be set by a property file, or for a web application by a web.xml file (see for instance grobid-service in the [grobid](https://github.com/kermitt2/grobid) project).
+The context paths (pGrobidHome and pGrobidProperties) can be set by a property file, or for a web application by a web.xml file (see for instance `grobid-service` in the [grobid](https://github.com/kermitt2/grobid) project).
 
 
 
