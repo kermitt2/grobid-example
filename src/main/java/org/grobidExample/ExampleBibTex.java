@@ -41,7 +41,7 @@ public class ExampleBibTex {
         }
     }
 
-    public String runGrobid(File pdfFile, String process, boolean consolidate) {
+    public String runGrobid(File pdfFile, String process, int consolidate) {
         StringBuilder bibtex = new StringBuilder();
         try {
             if (process.equals("header")) {
@@ -89,13 +89,15 @@ public class ExampleBibTex {
         String pdfPath = args[1];
         String bibPath = args[2];
         String consolidation = null;
-        boolean consolidate = false;
+        boolean consolidate = 0;
         if (args.length == 4)
             consolidation = args[3];
 
         System.out.print(process + " " + pdfPath + " " + bibPath);
         if ((consolidation != null) && (consolidation.equals("1") || consolidation.equals("true")))
-            consolidate = true;
+            consolidate = 1;
+        if ((consolidation != null) && (consolidation.equals("2") ))
+            consolidate = 2;
 
         File pdfFile = new File(pdfPath);
         File bibFile = new File(bibPath);

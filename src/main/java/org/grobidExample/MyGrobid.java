@@ -35,7 +35,7 @@ public class MyGrobid {
 
             // Biblio object for the result
             BiblioItem resHeader = new BiblioItem();
-            tei = engine.processHeader(pdfPath, false, resHeader);
+            tei = engine.processHeader(pdfPath, 1, resHeader);
         } catch (Exception e) {
             // If an exception is generated, print a stack trace
             e.printStackTrace();

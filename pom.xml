@@ -8,7 +8,7 @@
     <groupId>grobid-example</groupId>
     <artifactId>org.grobidExample</artifactId>
     <packaging>jar</packaging>
-    <version>0.5.2-SNAPSHOT</version>
+    <version>0.5.3-SNAPSHOT</version>
 
     <name>grobid-example</name>
     <description>Examples of usage of Grobid in a third party Java project.</description>
@@ -104,7 +104,7 @@
         <dependency>
             <groupId>org.grobid</groupId>
             <artifactId>grobid-core</artifactId>
-            <version>0.5.2-SNAPSHOT</version>
+            <version>0.5.3-SNAPSHOT</version>
         </dependency>
 
         <!-- commons -->
