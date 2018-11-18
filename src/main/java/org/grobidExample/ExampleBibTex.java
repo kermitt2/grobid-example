@@ -89,7 +89,7 @@ public class ExampleBibTex {
         String pdfPath = args[1];
         String bibPath = args[2];
         String consolidation = null;
-        boolean consolidate = 0;
+        int consolidate = 0;
         if (args.length == 4)
             consolidation = args[3];
 

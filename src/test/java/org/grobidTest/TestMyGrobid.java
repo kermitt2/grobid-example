@@ -26,7 +26,7 @@ public class TestMyGrobid {
 	public void testHeaderBibTeX() throws Exception {
 		String pdfPath = "./src/test/resources/Wang_paperAVE2008.pdf";
 		ExampleBibTex example = new ExampleBibTex();
-		String result = example.runGrobid(new File(pdfPath), "header", false);
+		String result = example.runGrobid(new File(pdfPath), "header", 0);
 		assertNotNull(result);
 		
 		System.out.println(result);
@@ -37,7 +37,7 @@ public class TestMyGrobid {
 	public void testCitationBibTeX() throws Exception {
 		String pdfPath = "./src/test/resources/Wang_paperAVE2008.pdf";
 		ExampleBibTex example = new ExampleBibTex();
-		String result = example.runGrobid(new File(pdfPath), "citation", false);
+		String result = example.runGrobid(new File(pdfPath), "citation", 0);
 		assertNotNull(result);
 		
 		System.out.println(result);
