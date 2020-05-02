@@ -4,11 +4,11 @@ Note: there's a usage example of GROBID Java library in an __ant__ project [here
 
 You need to install first and build Grobid, see this link: [Build the project](http://grobid.readthedocs.org/en/latest/Install-Grobid/)
 
-Via maven, this will deploy the Grobid artifact in your local maven repository. This will also create a jar file under: grobid/grobid-core/target/grobid-core-`<current version>`.jar
+Via maven, this will deploy the Grobid artifact in your local maven repository. This will also create a jar file under: grobid-core/build/libs/grobid-core-`<current version>`.jar
 
-Copy the Grobid jar library under grobid-example/lib :
+The grobid library should be available via your local maven repo, but if necessary, you can also copy the Grobid jar library under `grobid-example/lib`:
 
-> copy target/grobid-core-`<current version>`.jar `path_to_grobid_example`/grobid-example/lib
+> cp grobid-core/build/libs/grobid-core-`<current version>`.jar `path_to_grobid_example`/grobid-example/lib
 
 The paths to __grobid-home__ and to the property __grobid.properties__ file must be changed in the project property file:  `grobid-example/grobid-example.properties` according to your installation, for instance: 
 
@@ -53,14 +53,14 @@ We describe below how Grobid is used in this example project. You can use this p
 
 ### Building with maven
 
-When using maven, if you want to call Grobid API, you need to include in your pom file the path to the Grobid jar file, for instance as follow (replace `0.5.0-SNAPSHOT` by the valid `<current version>`):
+When using maven, if you want to call Grobid API, you need to include in your pom file the path to the Grobid jar file, for instance as follow (replace `0.6.0` by the valid `<current version>`):
 
 	<dependency>
 	    <groupId>org.grobid.core</groupId>
 	    <artifactId>grobid</artifactId>
-	    <version>0.5.2-SNAPSHOT</version>
+	    <version>0.6.0</version>
 	    <scope>system</scope>
-	    <systemPath>${project.basedir}/lib/grobid-core-0.5.2-SNAPSHOT.jar</systemPath>
+	    <systemPath>${project.basedir}/lib/grobid-core-0.6.0.jar</systemPath>
 	</dependency>
 
 ### API call
@@ -96,7 +96,7 @@ When using Grobid, you have to initiate a context with the path to the Grobid re
 			e.printStackTrace();
 		} 
 
-The context paths (pGrobidHome and pGrobidProperties) can be set by a property file, or for a web application by a web.xml file (see for instance `grobid-service` in the [grobid](https://github.com/kermitt2/grobid) project).
+The context paths (`pGrobidHome` and `pGrobidProperties`) can be set by a property file, or for a web application by a `web.xml` file (see for instance `grobid-service` in the [grobid](https://github.com/kermitt2/grobid) project).
 
 
 
