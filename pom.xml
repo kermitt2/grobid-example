@@ -8,7 +8,7 @@
     <groupId>grobid-example</groupId>
     <artifactId>org.grobidExample</artifactId>
     <packaging>jar</packaging>
-    <version>0.6.0</version>
+    <version>0.6.2</version>
 
     <name>grobid-example</name>
     <description>Examples of usage of Grobid in a third party Java project.</description>
@@ -55,6 +55,11 @@
             <url>https://download.java.net/maven/2/</url>
             <layout>default</layout>
         </repository>
+        <repository>
+           <id>bintray-rookies-maven</id>
+           <name>bintray</name>
+           <url>https://dl.bintray.com/rookies/maven</url>
+       </repository>
     </repositories>
 
     <pluginRepositories>
@@ -70,6 +75,14 @@
                 <updatePolicy>never</updatePolicy>
             </releases>
         </pluginRepository>
+        <pluginRepository>
+               <snapshots>
+                   <enabled>false</enabled>
+               </snapshots>
+               <id>bintray-rookies-maven</id>
+               <name>bintray-plugins</name>
+               <url>https://dl.bintray.com/rookies/maven</url>
+           </pluginRepository>
     </pluginRepositories>
 
     <build>
@@ -126,9 +139,9 @@
 
         <!-- grobid -->
         <dependency>
-            <groupId>org.grobid</groupId>
-            <artifactId>grobid-core</artifactId>
-            <version>0.6.0</version>
+          <groupId>org.grobid</groupId>
+          <artifactId>grobid-core</artifactId>
+          <version>0.6.2</version>
         </dependency>
 
         <!-- commons -->
