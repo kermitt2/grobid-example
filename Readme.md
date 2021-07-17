@@ -1,7 +1,5 @@
 This project illustrates how to embed Grobid ([grobid](https://raw.github.com/kermitt2/grobid)) in your Java application. This example project is using GROBID Java API for extracting header metadata and citations from a PDF and output the results in BibTex format. 
 
-Note: there's a usage example of GROBID Java library in an __ant__ project [here](https://github.com/kermitt2/grobid-test-ant).
-
 The  simplest is to install first and build Grobid locally, see this link: [Build the project](http://grobid.readthedocs.org/en/latest/Install-Grobid/)
 
 Via maven, this will deploy the Grobid artifact in your local maven repository. This will also create a jar file under: grobid-core/build/libs/grobid-core-`<current version>`.jar
