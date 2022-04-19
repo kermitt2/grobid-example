@@ -8,7 +8,7 @@
     <groupId>grobid-example</groupId>
     <artifactId>org.grobidExample</artifactId>
     <packaging>jar</packaging>
-    <version>0.7.0</version>
+    <version>0.7.1</version>
 
     <name>grobid-example</name>
     <description>Examples of usage of Grobid in a third party Java project.</description>
@@ -60,9 +60,14 @@
            <name>bintray</name>
            <url>https://dl.bintray.com/rookies/maven</url>
        </repository-->
-       <repository>
+       <!--repository>
             <id>jitpack.io</id>
             <url>https://jitpack.io</url>
+        </repository-->
+        <repository>
+            <id>grobid</id>
+            <name>GROBID DIY repo</name>
+            <url>https://grobid.s3.eu-west-1.amazonaws.com/repo/</url>
         </repository>
     </repositories>
 
@@ -143,9 +148,9 @@
 
         <!-- grobid -->
         <dependency>
-            <groupId>com.github.kermitt2</groupId>
-            <artifactId>grobid</artifactId>
-            <version>0.7.0</version>
+            <groupId>org.grobid</groupId>
+            <artifactId>grobid-core</artifactId>
+            <version>0.7.1</version>
         </dependency>
         <!--dependency>
           <groupId>org.grobid</groupId>
