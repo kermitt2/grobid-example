@@ -8,7 +8,7 @@
     <groupId>grobid-example</groupId>
     <artifactId>org.grobidExample</artifactId>
     <packaging>jar</packaging>
-    <version>0.7.1</version>
+    <version>0.7.3</version>
 
     <name>grobid-example</name>
     <description>Examples of usage of Grobid in a third party Java project.</description>
@@ -55,15 +55,6 @@
             <url>https://download.java.net/maven/2/</url>
             <layout>default</layout>
         </repository>
-        <!--repository>
-           <id>bintray-rookies-maven</id>
-           <name>bintray</name>
-           <url>https://dl.bintray.com/rookies/maven</url>
-       </repository-->
-       <!--repository>
-            <id>jitpack.io</id>
-            <url>https://jitpack.io</url>
-        </repository-->
         <repository>
             <id>grobid</id>
             <name>GROBID DIY repo</name>
@@ -84,14 +75,6 @@
                 <updatePolicy>never</updatePolicy>
             </releases>
         </pluginRepository>
-        <!--pluginRepository>
-               <snapshots>
-                   <enabled>false</enabled>
-               </snapshots>
-               <id>bintray-rookies-maven</id>
-               <name>bintray-plugins</name>
-               <url>https://dl.bintray.com/rookies/maven</url>
-           </pluginRepository-->
     </pluginRepositories>
 
     <build>
@@ -150,13 +133,8 @@
         <dependency>
             <groupId>org.grobid</groupId>
             <artifactId>grobid-core</artifactId>
-            <version>0.7.1</version>
+            <version>0.7.3</version>
         </dependency>
-        <!--dependency>
-          <groupId>org.grobid</groupId>
-          <artifactId>grobid-core</artifactId>
-          <version>0.7.0</version>
-        </dependency-->
 
         <!-- commons -->
         <dependency>
@@ -221,13 +199,25 @@
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-core</artifactId>
-            <version>2.13.2</version>
+            <version>2.10.1</version>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
-            <version>2.13.2.2</version>
+            <version>2.10.1</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.module</groupId>
+            <artifactId>jackson-module-afterburner</artifactId>
+            <version>2.10.1</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.dataformat</groupId>
+            <artifactId>jackson-dataformat-yaml</artifactId>
+            <version>2.10.1</version>
+        </dependency>
+
     </dependencies>
 
     <profiles>
@@ -279,6 +269,7 @@
                             <executable>java</executable>
                             <classpathScope>compile</classpathScope>
                             <arguments>
+                                <!--argument>-Djava.library.path=${project.basedir}/lib</argument-->
                                 <argument>-classpath</argument>
                                 <classpath/>
                                 <argument>org.grobidExample.ExampleBibTex</argument>
