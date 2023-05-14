@@ -58,7 +58,7 @@ We describe below how Grobid is used in this example project. You can use this p
 
 ### Building with maven
 
-When using maven, if you want to call GROBID library without a local build of GROBID, you need to include in your pom file Jitpack as repository and the GROBID dependency, for instance as follow (replace `0.7.1` by the valid `<current version>`):
+When using maven, if you want to call GROBID library without a local build of GROBID, you need to include in your pom file Jitpack as repository and the GROBID dependency, for instance as follow (replace `0.7.3` by the valid `<current version>`):
 
 ```xml
     <repositories>
@@ -72,7 +72,7 @@ When using maven, if you want to call GROBID library without a local build of GR
     <dependency>
         <groupId>org.grobid</groupId>
         <artifactId>grobid-core</artifactId>
-        <version>0.7.1</version>
+        <version>0.7.3</version>
     </dependency>
 ```
 
